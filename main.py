@@ -1,7 +1,8 @@
-import warnings
-
 import predict
 from convert_reaction import convert_equation
+
+import warnings
+warnings.filterwarnings("ignore")
 
 
 class bcolors:
@@ -16,7 +17,7 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
-if __name__ == '__main__':
+def main():
     print('Equation syntax:')
     print(bcolors.OKCYAN + 'reagent & reagent & reagent >>> product & product' + bcolors.ENDC)
     print('reagents and products should be entered in SMILES')
@@ -41,12 +42,12 @@ if __name__ == '__main__':
                 print(bcolors.FAIL + 'Compounds not readable. Ensure compound SMILES strings are valid.' + bcolors.ENDC)
                 print('To get valid SMILES representation, find compound on PubChem: https://pubchem.ncbi.nlm.nih.gov/')
 
-    print()
     print('Equation valid. Predicting conditions...')
 
-    print('Temperature prediction:', end=' ')
-    temperature = predict.predict_temperature(encoding)
-    print(bcolors.OKCYAN + str(round(temperature, 2)) + ' K (' + str(round(temperature - 273.15, 2)) + '°C)' + bcolors.ENDC)
+    #print('Temperature prediction:', end=' ')
+    #temperature = predict.predict_temperature(encoding)
+    #print(bcolors.OKCYAN + str(round(temperature, 2)) + ' K (' + str(
+        #round(temperature - 273.15, 2)) + '°C)' + bcolors.ENDC)
 
     print('Solvent prediction:', end=' ')
     solvent = predict.predict_solvent(encoding)
@@ -55,3 +56,7 @@ if __name__ == '__main__':
     print('Catalyst prediction:', end=' ')
     catalyst = predict.predict_catalyst(encoding)
     print(bcolors.OKCYAN + catalyst + bcolors.ENDC)
+
+
+if __name__ == '__main__':
+    main()

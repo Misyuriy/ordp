@@ -8,6 +8,9 @@ from rdkit.Chem import DataStructs
 from rdkit.Chem import rdMolDescriptors
 from rdkit.Chem import rdFingerprintGenerator
 
+from rdkit import RDLogger
+RDLogger.DisableLog('rdApp.*')
+
 
 def fingerprint(smiles, generator):
     mol = Chem.MolFromSmiles(smiles)
@@ -16,7 +19,7 @@ def fingerprint(smiles, generator):
     return np.unpackbits(np.frombuffer(DataStructs.BitVectToBinaryText(fp), dtype=np.uint8), bitorder='little')
 
 
-def convert_equation(equation: str, max_reactants=8, max_products=4):
+def convert_equation(equation: str, max_reactants=8, max_products=6):
     r, p = equation.split('>>>')
     reactants = r.split('&')
     products = p.split('&')
@@ -38,4 +41,4 @@ def convert_equation(equation: str, max_reactants=8, max_products=4):
         compound = product.strip(' ')
         result['product_' + str(index)] = clustering.predict([fingerprint(compound, generator)])[0]
 
-    return pd.Series(result)
+    return pd.DataFrame([pd.Series(result)])
