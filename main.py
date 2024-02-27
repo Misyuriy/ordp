@@ -44,10 +44,10 @@ def main():
 
     print('Equation valid. Predicting conditions...')
 
-    #print('Temperature prediction:', end=' ')
-    #temperature = predict.predict_temperature(encoding)
-    #print(bcolors.OKCYAN + str(round(temperature, 2)) + ' K (' + str(
-        #round(temperature - 273.15, 2)) + '°C)' + bcolors.ENDC)
+    print('Temperature prediction:', end=' ')
+    temperature = predict.predict_temperature(encoding)
+    print(bcolors.OKCYAN + str(round(temperature, 2)) + ' K (' + str(
+        round(temperature - 273.15, 2)) + '°C)' + bcolors.ENDC)
 
     print('Solvent prediction:', end=' ')
     solvent = predict.predict_solvent(encoding)

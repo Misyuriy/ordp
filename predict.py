@@ -30,8 +30,8 @@ def predict_catalyst(data: pd.Series()) -> str:
 
 def predict_temperature(data: pd.Series()) -> float:
     regressor = XGBRegressor()
-    regressor.load('models/temperature_XGB')
+    regressor.load_model('models/temperature_XGB.json')
 
     data = data[regressor.get_booster().feature_names]
 
-    return regressor.predict(data)
+    return regressor.predict(data)[0]

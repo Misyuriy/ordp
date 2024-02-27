@@ -45,4 +45,4 @@ Work in progress:
 - Improved compound clustering
 - More features for usage in code
 
-Temperature prediction accuracy is low.
+NOTE: temperature prediction accuracy is low.
