@@ -47,19 +47,25 @@ def main():
     temperature, solvent, catalyst = get_known_equation(equation)
 
     print('Temperature prediction:', end=' ')
+    p_temperature = predict.predict_temperature(encoding)
     if not temperature:
-        temperature = predict.predict_temperature(encoding)
+        temperature = p_temperature
+
     print(bcolors.OKCYAN + str(round(temperature, 2)) + ' K (' + str(
         round(temperature - 273.15, 2)) + '°C)' + bcolors.ENDC)
 
     print('Solvent prediction:', end=' ')
+    p_solvent = predict.predict_solvent(encoding)
     if not solvent:
-        solvent = predict.predict_solvent(encoding)
+        solvent = p_solvent
+
     print(bcolors.OKCYAN + solvent + bcolors.ENDC)
 
     print('Catalyst prediction:', end=' ')
+    p_catalyst = predict.predict_catalyst(encoding)
     if not catalyst:
-        catalyst = predict.predict_catalyst(encoding)
+        catalyst = p_catalyst
+
     print(bcolors.OKCYAN + catalyst + bcolors.ENDC)
 
 
