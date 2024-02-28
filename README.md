@@ -26,7 +26,7 @@ Example reaction: formaldehyde with 2-methoxyethanol
     COCCO & C=O >>> COCCOCOCCOC
 
 ## Usage in code:
-Prediction of catalyst for steam methane reforming:
+Prediction of catalyst for formaldehyde reaction with 2-methoxyethanol:
 
     from ordp.predict import predict_catalyst
     from ordp.convert_reaction import convert_equation
