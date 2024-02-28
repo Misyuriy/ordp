@@ -21,9 +21,9 @@ The program accepts **Equation** syntax:
 Each compound (reagent or product) must be a valid SMILES string.
 To get valid SMILES representation, find compound on PubChem: https://pubchem.ncbi.nlm.nih.gov/
 
-Example reaction: steam methane reforming
+Example reaction: formaldehyde with 2-methoxyethanol
 
-    C & O >>> [HH] & [C-]#[O+]
+    COCCO & C=O >>> COCCOCOCCOC
 
 ## Usage in code:
 Prediction of catalyst for steam methane reforming:
@@ -31,7 +31,7 @@ Prediction of catalyst for steam methane reforming:
     from ordp.predict import predict_catalyst
     from ordp.convert_reaction import convert_equation
     
-    data = convert_equation('C & O >>> [HH] & [C-]#[O+]')
+    data = convert_equation('COCCO & C=O >>> COCCOCOCCOC')
     
     print(predict_catalyst(data))
 
